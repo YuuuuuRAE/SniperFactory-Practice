@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,10 @@ public class Player : MonoBehaviour
     //Try 4
     public float scale = 0.1f;
 
+    public bool speedup = false;
+    public bool spawn_speedup = false;
+
+    public int stepup_score = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +62,12 @@ public class Player : MonoBehaviour
     public void addScore (int s)
     {
         score += s;
+        if (score % stepup_score == 0)
+        {
+            speedup = true;
+            spawn_speedup = true;
+        }
+
         scoreOutput.text = "Á¡¼ö : " + score;
     }
 }
